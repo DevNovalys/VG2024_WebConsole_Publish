@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Novalys.VisualGuard.Security.Core.ExecutionEngine.VGNetCoreExecutionEngine">
+            <summary>
+            The Visual Guard execution engine executes all security actions for the application according to the permissions of the user.
+            This class is responsible for .net core applications.
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider">
+            <summary>
+            Represents .net Core Platform PlugIn Provider.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider.VGAssemblyHelper">
+            <summary>
+            AssemblyHelper Plugin.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider.VGLikeOperatorHelper">
+            <summary>
+            LikeOperator PlugIn.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider.VGAppDomainHelper">
+            <summary>
+            AppDomainHelper PlugIn
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider.IdentityModules">
+            <summary>
+            IdentityModules Plugin
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Core.VGNetCorePlatformPlugInsProvider.Type">
+            <summary>
+            Gets type of PlugInProvider.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.WebForm.Core</name>
+    </assembly>
+    <members>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.Permissions">
+            <summary>
+            Property to define permissions in comma seperated
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.PermissionIds">
+            <summary>
+            Property to define permission Ids in comma seperated
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.RoleIds">
+            <summary>
+            Property to define role Ids in comma seperated
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.Roles">
+            <summary>
+            Property to define roles in comma seperated
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.SplitString(System.String)">
+            <summary>
+            Splits the Comma seperated String into array 
+            </summary>
+            <param name="original">Comma seperated string</param>
+            <returns>Returns string array</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGAuthorizeAttribute.SplitGuid(System.String)">
+            <summary>
+            Splits the Comma seperated String into Guid array 
+            </summary>
+            <param name="original">Comma seperated string</param>
+            <returns>Returns Guid array</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Novalys.VisualGuard.Security.WebForm.Core.VGWebConfiguration},Microsoft.AspNetCore.Http.IHttpContextAccessor,Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddlewareBehaviour)">
+            <summary>
+            Visual Guard Middleware constructure for DI. Singleton and objects for lifetime.
+            </summary>
+            <param name="next"></param>
+            <param name="options"></param>
+            <param name="contextAccessor"></param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.SetDefaultRuntime(Novalys.VisualGuard.Security.VGSecurityRuntime)">
+            <summary>
+            Sets default runtime untill new runtime for client has not been created.
+            </summary>
+            <param name="runtime"></param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.InitializeRuntime">
+            <summary>
+            Initializes VGRuntime for the first time.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.Init">
+            <summary>
+            Initialize from constructor to init app settings
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Main execution point. Calls multiple times for each request.
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.CanExcludePath(Microsoft.AspNetCore.Http.HttpContext,Novalys.VisualGuard.Security.WebForm.Core.VGWebConfiguration)">
+            <summary>   
+            Verifies to check if to exclude current path or extension
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.WebForm.Core.VGCoreMiddleware.AuthenticateWindowsIdentity(Microsoft.AspNetCore.Http.HttpContext,System.Security.Principal.WindowsIdentity)">
+            <summary>
+            Method to authenticate Windows identity from token or identity.
+            </summary>
+            <param name="context"></param>
+            <param name="identity"></param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGWebConfiguration.ConnectionTimeOut">
+            <summary>
+            Database Connection Timeout. Set 10 minutes (600 seconds) as default
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.WebForm.Core.VGWebConfiguration.UserInterfaceId">
+            <summary>
+            User Interface Id of Console.
+            </summary>
+        </member>
+    </members>
+</doc>

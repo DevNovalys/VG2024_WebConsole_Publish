@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.Oracle</name>
+    </assembly>
+    <members>
+        <member name="T:Novalys.VisualGuard.Security.Oracle.Common.CommandReturnCode">
+            <summary>
+            Description résumée de CommandStatus.
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException">
+            <summary>
+            Exception thrown when the file does not contains a valid serialized data.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException.#ctor(System.String)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+            <param name="innerException">Any nested exception</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.Common.VGInvalidSerializedFileException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+            <param name="info">The object that holds the serialized object data</param>
+            <param name="context">The contextual information about the source or destination</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.CraftSystem.Entity.VGOracleRepositoryEntityManager.CheckSchemaName(System.String,Oracle.ManagedDataAccess.Client.OracleConnection)">
+            <summary>
+            Checks whether the specified schema exists for the connection.
+            </summary>
+            <returns>true when the schema exists false otherwise.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.CraftSystem.Entity.VGOracleRoleEntityManager.UpdateProfileValuesForRole(Novalys.VisualGuard.Security.Role.VGIRoleInformation)">
+            <summary>
+            Update profile values for role. (Deletes all profile values for this role, and re create them to update)
+            </summary>
+            <param name="item">VGIRoleInformation</param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData">
+            <summary>
+            Configuration data for a repository based on file.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.#ctor">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData"/> class.</para>
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.#ctor(System.String,System.String,Novalys.VisualGuard.Security.VGAuthenticationMode,System.Boolean,System.Guid,System.String)">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData"/> class with a name and a path.</para>
+            </summary>
+            <param name="name">
+            <para>The name of the <see cref="T:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData"/>.</para>
+            </param>
+            <param name="schema">the name of the schema (user database) who owns the repository tables.</param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.TypeName">
+            <summary>
+            <para>Gets or sets the <see cref="T:System.Type"/> name of the node used in the Visual Guard Console.</para>
+            </summary>
+            <value>
+            <para>The type name of the node used in the Visual Guard Console. The default is an empty string.</para>
+            </value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.RepositoryConnectionTypeName">
+            <summary>
+            Returns the type of the repository connection.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.Schema">
+            <summary>
+            the name of the schema (user database) who owns the repository tables.
+            </summary>
+            <remarks>if empty, Visual Guard will user specified in the connection as schema.</remarks>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.DisplayInformation">
+            <summary>
+            <para>Gets the information about the repository.</para>
+            </summary>
+            <value>
+            <para>The information about the repository</para>
+            </value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Oracle.Repository.Configuration.VGOracleRepositoryData.ConnectionString">
+            <summary>
+            The connection string allowing to connect to the database containing the repository.
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Oracle.Repository.VGOracleRepositoryConnection">
+            <summary>
+            Represents the information about the file authentication repository
+            </summary>
+        </member>
+    </members>
+</doc>

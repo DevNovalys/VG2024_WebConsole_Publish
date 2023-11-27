@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.SQLServer</name>
+    </assembly>
+    <members>
+        <member name="T:Novalys.VisualGuard.Security.SQLServer.Common.CommandReturnCode">
+            <summary>
+            Description résumée de CommandStatus.
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException">
+            <summary>
+            Exception thrown when the file does not contains a valid serialized data.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException.#ctor(System.String)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+            <param name="innerException">Any nested exception</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Common.VGInvalidSerializedFileException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+            <param name="info">The object that holds the serialized object data</param>
+            <param name="context">The contextual information about the source or destination</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.CalculateRowsFromTo(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Calculates rows to fetch - FromRowNumber and ToRowNumber based on pageindex and pagesize 
+            </summary>
+            <param name="pageIndex">pageIndex</param>
+            <param name="pageSize">pageSize</param>
+            <param name="from">from</param>
+            <param name="to">to</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetQueryForPagination(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Get query for user pagination.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="wherePattern">wherePattern</param>
+            <returns>Get query for user pagination along with VGTotalCount column</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetQueryForPagination(System.Int32,System.Int32,System.String)">
+            <summary>
+            Get query for user pagination.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="wherePattern">wherePattern</param>
+            <returns>Get query for user pagination along with VGTotalCount column</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetQueryForPagination(System.Int32,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get query for user pagination.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="wherePattern">wherePattern</param>
+            <param name="InnerJoinClauseWithUserTable">InnerJoinClauseWithUserTable</param>
+            <returns>Get query for user pagination along with VGTotalCount column</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetRestrictedQueryForPagination(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.String,System.String,System.String,System.String)">
+            <summary>
+            Get restrcited query for pagination of users.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="userids">userids</param>
+            <param name="wherePattern">wherePattern for Users table</param>
+            <param name="usertableAlias">Users table alias name</param>
+            <param name="InnerJoinClauseWithUserTable">if any InnerJoinClauseWithUserTable</param>
+            <returns></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetRestrictedQueryForPagination(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            Get restrcited query for pagination of users.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="userids">userids</param>
+            <param name="wherePattern">wherePattern for Users table</param>
+            <returns></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.Pagination.PrincipalPaginationHelper.GetRestrictedQueryForPagination(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Get restrcited query for pagination of users.
+            </summary>
+            <param name="pageindex">pageindex</param>
+            <param name="pagesize">pagesize</param>
+            <param name="userids">userids</param>
+            <param name="wherePattern">wherePattern for Users table</param>
+            <returns></returns>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.VGSqlServerAuthenticationOptionEntityManager">
+            <summary>
+            
+            </summary>0
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.VGSqlServerIdentityServerEntityManager">
+            <summary>
+            
+            </summary>0
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.VGSqlServerPrincipalEntityManager.GetCountForQuery(System.String)">
+            <summary>
+            Gets count for query.
+            </summary>
+            <param name="query"></param>
+            <returns>count</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.CraftSystem.Entity.VGSqlServerRoleEntityManager.UpdateProfileValuesForRole(Novalys.VisualGuard.Security.Role.VGIRoleInformation)">
+            <summary>
+            Update profile values for role. (Deletes all profile values for this role, and re create them to update)
+            </summary>
+            <param name="item">VGIRoleInformation</param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData">
+            <summary>
+            Configuration data for a repository based on file.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData.#ctor">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData"/> class.</para>
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData.#ctor(System.String,Novalys.VisualGuard.Security.VGAuthenticationMode,System.Boolean,System.Guid,System.String)">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData"/> class with a name and a path.</para>
+            </summary>
+            <param name="name">
+            <para>The name of the <see cref="T:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData"/>.</para>
+            </param>
+            <param name="path">
+            <para>The name of the <see cref="T:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData"/>.</para>
+            </param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData.TypeName">
+            <summary>
+            <para>Gets or sets the <see cref="T:System.Type"/> name of the node used in the Visual Guard Console.</para>
+            </summary>
+            <value>
+            <para>The type name of the node used in the Visual Guard Console. The default is an empty string.</para>
+            </value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.SQLServer.Repository.Configuration.VGSQLServerRepositoryData.RepositoryConnectionTypeName">
+            <summary>
+            Returns the type of the repository connection.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.SQLServer.Repository.VGSQLServerRepositoryConnection.GetSqlDate(System.DateTime)">
+            <summary>
+            Transform the datetime to sql 
+            Remove the nano second
+            Keep only 
+            Year, Month, Day, Hour, Minute, Second,Millisecond
+            </summary>
+            <param name="datetime"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

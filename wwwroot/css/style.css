@@ -1,0 +1,1910 @@
+/*Now the CSS*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 13px;
+}
+
+
+
+.VgworkflowTree ul {
+    padding-top: 40px;
+    position: relative;
+    /* background: #fff; */
+    z-index: 2;
+    display: flex;
+    /* flex-direction: column; */
+    /* overflow: hidden; */
+}
+
+.VgworkflowTree li {
+    /* float: left; */
+    text-align: center;
+    z-index: 1;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    margin: 0 auto;
+    /* display: inline-block; */
+    vertical-align: top;
+    padding-bottom: 30px;
+    width: 97.5%;
+    background: #fff;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.VgworkflowTree li::before,
+.VgworkflowTree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 49.9%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 100%;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.VgworkflowTree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.VgworkflowTree li:only-child::after,
+.VgworkflowTree li:only-child::before {
+    display: none;
+}
+
+/*Remove space from the top of single children*/
+.VgworkflowTree li:only-child {
+    padding-top: 0;
+}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.VgworkflowTree li:first-child::before,
+.VgworkflowTree li:last-child::after {
+    border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.VgworkflowTree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+}
+
+.VgworkflowTree li:first-child::after {
+    border-radius: 5px 0 0 5px;
+    /* height: 70%; */
+}
+
+/*Time to add downward connectors from parents*/
+.VgworkflowTree ul .insert-component::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 49.99%;
+    border-left: 1px solid #ccc;
+    width: 1px;
+    height: 55px;
+    z-index: -1;
+}
+
+.VgworkflowTree ul ul::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 49.99%;
+    border-left: 1px solid #ccc;
+    width: 1px;
+    height: 55px;
+    z-index: -1;
+}
+
+.VgworkflowTree li a {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #666;
+    font-family: arial, verdana, tahoma;
+    display: inline-block;
+    background: #fff;
+    z-index: 2;
+    position: relative;
+    max-width: 300px;
+    border-radius: 5px;
+    min-width: 75px;
+}
+
+.insert-component {
+    height: 29px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 80px;
+    width: 100%;
+    margin: 0 auto;
+    bottom: -30px;
+    z-index: 3;
+}
+
+/*send email node*/
+.VgworkflowTree>ul>li>ul.send-email {
+    padding-top: 0;
+    z-index: 3;
+    padding-bottom: 10px;
+}
+
+.VgworkflowTree .send-email {
+    padding-top: 9px;
+    padding-bottom: 17px;
+}
+
+.VgworkflowTree ul ul .send-email {
+    padding-top: 7px;
+}
+
+.VgworkflowTree .send-email::before {
+    content: none
+}
+
+.VgworkflowTree .only-send-email {
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.VgworkflowTree .only-send-email li {
+    padding-bottom: 0;
+}
+
+.VgworkflowTree .only-send-email::before {
+    content: '';
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.VgworkflowTree .only-send-email .send-email-node .insert-component {
+    display: none;
+}
+
+/* .VgworkflowTree .send-email li {
+    padding-bottom: 0
+} */
+
+.insert-component.start {
+    border: none
+}
+
+.start::before {
+    background: #6e856d;
+    margin-top: -11px !important;
+}
+
+.start i {
+    position: relative;
+    z-index: 4;
+    color: #fff;
+}
+
+.end::before {
+    background: #d96058;
+}
+
+.vgdot::before {
+    content: "";
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    z-index: 3;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.grey::before {
+    background: #f1f1f1;
+    border: 1px solid #dddddd;
+}
+
+.outer-wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    padding: 5px 10px 5px 57px;
+    position: relative;
+    border-radius: 4px;
+    min-height: 44px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.inner-wrapper {
+    position: absolute;
+    left: -49px;
+    height: 95px;
+    width: 95px;
+    top: -40px;
+    background: #4b4b4b;
+    transform: rotate(-60deg);
+}
+
+.outer-wrapper i {
+    top: 11px;
+    left: 10px;
+    position: absolute;
+    font-size: 18px;
+    color: #fff;
+}
+
+
+.bg-green .inner-wrapper {
+    background: #6e856d;
+}
+
+.bg-green:hover {
+    /* color: #fff !important; */
+    border: 1px solid #5b755a !important;
+}
+
+
+.bg-red .inner-wrapper {
+    background: #d96058;
+}
+
+.bg-red:hover {
+    /* color: #fff !important; */
+    border: 1px solid #e84a5f !important;
+}
+
+
+.bg-blue {
+    border: 1px solid #5c8083 !important;
+}
+
+.bg-blue .inner-wrapper {
+    /* color: #fff !important; */
+    background: #5c8083;
+}
+
+.bg-violet:hover {
+    /* color: #fff !important; */
+    border: 1px solid #a48f9d !important;
+}
+
+.bg-violet .inner-wrapper {
+    background: #a48f9d;
+}
+
+.bg-orange {
+    /* color: #fff !important; */
+    border: 1px solid #f6ab6c !important;
+}
+
+.bg-orange:hover {
+    /* color: #fff !important; */
+    border: 1px solid #f6ab6c !important;
+}
+
+.bg-orange .inner-wrapper {
+    background: #f6ab6c;
+}
+
+
+.bg-tilt {
+    /* color: #fff !important; */
+    border: 1px solid #71c9ce !important;
+}
+
+.bg-tilt:hover {
+    /* color: #fff !important; */
+    border: 1px solid #71c9ce !important;
+}
+
+.bg-tilt .inner-wrapper {
+    background: #71c9ce;
+}
+
+
+
+.node-title-container {
+    min-width: 150px !important;
+    padding: 0 !important;
+}
+
+.text-ellipses {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*starting css*/
+.VgworkflowTree .starting {
+    padding: 0 0 40px 0;
+}
+
+.VgworkflowTree .ending {
+    padding: 0 0 40px 0;
+}
+
+
+.VgworkflowTree .starting .insert-component {
+    height: 36px;
+    bottom: -37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.VgworkflowTree .starting .insert-component::after {
+    height: 44px;
+}
+
+.VgworkflowTree .starting li {
+    padding-bottom: 0
+}
+
+.VgworkflowTree .starting:before {
+    content: none
+}
+
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.VgworkflowTree li a:hover,
+.VgworkflowTree li a:hover+ul li a {
+    /* background: #c8e4f8; */
+    color: #000;
+    border: 1px solid #94a0b4;
+}
+
+/*Connector styles on hover*/
+.VgworkflowTree li a:hover+ul li::after,
+.VgworkflowTree li a:hover+ul li::before,
+.VgworkflowTree li a:hover+ul::before,
+.VgworkflowTree li a:hover+ul ul::before,
+.VgworkflowTree li a:hover+ul ul::after {
+    border-color: #676e7b;
+}
+
+/* .VgworkflowTree>ul>li:first-child>ul>li>ul>li>ul>li>ul {
+
+    margin-top: 25px;
+
+    background: #fff;
+    position: relative;    
+    z-index: 2;
+} */
+
+.dotted-line {
+    border: 1px dotted #d1d1d1;
+}
+
+.dotted-line-padding {
+    padding-bottom: 75px;
+    margin-top: 7px;
+}
+
+/*.no-dotted-line:after {
+    border: none !important
+}*/
+
+
+
+.d-none {
+    display: none !important;
+}
+
+/*Diamond css*/
+.diamond-shape {
+
+
+    /* transform: rotate(47deg);
+      margin-top: 19px;
+    text-align: center;
+    height: 70px;
+    width: 70px !important; */
+}
+
+.condition-line {
+    /* display: table-cell; */
+    height: 100%;
+
+    vertical-align: top;
+    /* height: 70px;
+    transform: rotate(-45deg);
+    width: 70px !important; */
+}
+
+
+/* .VgworkflowTree li:last-child > a .insert-component{
+    margin-left: -1px;
+} */
+
+.diamond-shape .delete-node {
+    transform: rotate(0deg);
+}
+
+/*close icon*/
+.delete-node {
+    position: absolute;
+    right: -4px;
+    top: -6px;
+    padding: 7px;
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.delete-node:hover {
+    opacity: 1;
+}
+
+.delete-node:before,
+.delete-node:after {
+    position: absolute;
+    left: 6px;
+    content: ' ';
+    height: 7px;
+    width: 2px;
+    background-color: #fff;
+    top: 3px;
+}
+
+.delete-node:before {
+    transform: rotate(45deg);
+}
+
+.delete-node:after {
+    transform: rotate(-45deg);
+}
+
+
+/*last node*/
+ul.last ul:after {
+    content: "";
+    background: #d1d1d1;
+    height: 1px;
+    width: 52%;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+ul.last .end-node {
+    position: relative;
+    top: -25px;
+    bottom: 0;
+}
+
+.end-node-content {
+    position: relative;
+    width: 100%;
+    height: 26px;
+}
+
+ul.last .end-node:before {
+    content: "";
+    /* background: #d1d1d1; */
+    height: 1px;
+    width: 250%;
+    left: -69%;
+    position: absolute;
+    right: -100%;
+    z-index: 1;
+}
+
+.VgworkflowTree ul.last ul li div {
+    border: 1px dotted #d1d1d1;
+    width: auto;
+    display: inline-block;
+    padding: 5px 30px;
+}
+
+.VgworkflowTree ul.last:after {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 1px;
+    height: 28px;
+}
+
+.end-node {
+    position: relative;
+    margin-top: 69px;
+}
+
+.end-node .insert-component {
+    top: -35px;
+    bottom: inherit;
+}
+
+.end-node .insert-component.end {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.end i {
+    position: relative;
+    z-index: 4;
+    color: #fff;
+}
+
+.VgworkflowTree ul .end-node .insert-component::after {
+    height: 35px;
+}
+
+.end-node .grey {
+    top: -69px;
+    border: none
+}
+
+.no-node::before {
+    content: none
+}
+
+/*if condition css*/
+.set-condition {
+    padding-bottom: 0 !important
+}
+
+.VgworkflowTree li.set-condition a {
+    /* background: rgba(34, 136, 214, 1); */
+    z-index: 3;
+}
+
+.VgworkflowTree li.set-condition a.end-node {
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -38px;
+    bottom: -15px;
+    z-index: 3;
+}
+
+.VgworkflowTree li.set-condition a.end-node .insert-component {
+    top: 32px;
+    border: none;
+}
+
+.VgworkflowTree li.set-condition a.end-node .insert-component::after {
+    top: -7px;
+    height: 28px;
+}
+
+.VgworkflowTree .send-email-node {
+    /* background: rgba(34, 136, 214, 1); */
+}
+
+.VgworkflowTree .send-email-node:hover,
+.VgworkflowTree .send-email-node:focus {
+    /* background: rgba(109, 180, 234, 1); */
+    color: #000;
+    /* border: 1px solid #2288d6; */
+}
+
+
+
+.set-condition-node {
+    position: absolute;
+    height: 45px;
+    max-width: 80px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -39px;
+}
+
+.set-condition-node .insert-component {
+    top: 1px;
+    border: none
+}
+
+.VgworkflowTree .if-condition li.condition-case>a {
+    background: #fff;
+    z-index: 3;
+    border: 1px solid #a48f9d;
+    color: #000;
+}
+
+.VgworkflowTree li.set-condition a:hover,
+.VgworkflowTree li.set-condition a:hover+ul li a {
+    /* background: #a48f9d; */
+    color: #000;
+    border: 1px solid #a48f9d;
+}
+
+/*common classes*/
+ul.if-condition,
+ul.Switch-case {
+    z-index: 1;
+    margin-bottom: -1px;
+}
+
+/* Styles for  "For Loop" */
+/* reset code */
+.dotted-line-padding {
+    padding-bottom: 2px;
+}
+
+/* .VgworkflowTree>ul>li:first-child>ul>li>ul>li>ul>li>ul {
+    margin-bottom: 55px;
+} */
+
+.VgworkflowTree li.set-condition a.end-node {
+    bottom: 20px;
+}
+
+.VgworkflowTree ul .insert-component.vgdot-end:before {
+    top: 110%;
+}
+
+.VgworkflowTree a.action-node {
+    position: relative;
+}
+
+.VgworkflowTree a.action-node .delete-node {
+    top: -7px;
+    right: -5px;
+}
+
+.VgworkflowTree a.action-node .delete-node:before {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.VgworkflowTree a.action-node .delete-node:after {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+/* reset code */
+.oval-shape {
+    height: 50px !important;
+    width: 80px !important;
+    background-color: #0072c6;
+    border-radius: 50% !important;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+}
+
+.oval-shape span.label {
+    font-family: arial, verdana, tahoma;
+    font-size: 13px;
+    color: #fff;
+    display: inline-block;
+}
+
+.VgworkflowTree .for-loop .for-loop-line {
+    /* display: table-cell; */
+    height: 100%;
+    /* transform: rotate(-45deg); */
+    vertical-align: top;
+    /* height: 60px; */
+    /* width: 70px !important; */
+    vertical-align: middle;
+}
+
+.VgworkflowTree .for-loop .for-loop-line .delete-node {
+    right: 17px;
+}
+
+.VgworkflowTree .for-loop>li>ul {
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.VgworkflowTree .for-loop .diamond-shape {
+    z-index: 3 !important;
+}
+
+.VgworkflowTree .for-loop .root-node:after {
+    content: '' !important;
+    position: absolute;
+    top: 23px;
+    right: 50%;
+    height: -webkit-calc(100% - 25px);
+    height: -moz-calc(100% - 25px);
+    height: calc(100% - 25px);
+    width: calc(50% - 5px);
+    border-top: 1px solid #ccc !important;
+    border-bottom: 1px solid #d1d1d1 !important;
+    border-right: 1px solid #d1d1d1 !important;
+    display: inline-block !important;
+    border-radius: 0px 5px 5px 0 !important;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list {
+    padding: 0 0px 20px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list>li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list:before {
+    content: '' !important;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    border-left: 1px solid #ccc !important;
+    width: 1px;
+    height: 75px;
+    display: inline-block;
+    z-index: 2;
+    margin: auto;
+}
+
+/* 
+.for-loop .loop-iteration-list:after {
+    content: "" !important;
+    background-color: #f1f1f1;
+    border: 1px solid #dddddd;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    z-index: 1;
+    display: inline-block !important;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 29px;
+    z-index: 2;
+} */
+
+.VgworkflowTree .for-loop .root-node .diamond-shape .vgdot {
+
+    bottom: -61px;
+}
+
+.VgworkflowTree .for-loop .root-node .diamond-shape .vgdot:after {
+    display: none;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list .group-statement {
+    position: relative;
+    padding: 0;
+    min-height: 50px;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list .group-statement:before {
+    content: '' !important;
+    display: inline-block !important;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border-top: 1px dotted #ccc;
+    width: -webkit-calc(50% - 10px);
+    width: -moz-calc(50% - 10px);
+    width: calc(50% - 10px);
+    height: -webkit-calc(100% - 12px);
+    height: -moz-calc(100% - 12px);
+    height: calc(100% - 12px);
+    border-left: 1px dotted #d1d1d1;
+    border-right: 0;
+    border-bottom: 1px dotted #d1d1d1;
+    border-radius: 0;
+    background-color: #ffffff;
+}
+
+.VgworkflowTree .for-loop .loop-iteration-list .group-statement:after {
+    content: '' !important;
+    display: inline-block !important;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    border-top: 1px dotted #ccc;
+    width: -webkit-calc(50% - 10px);
+    width: -moz-calc(50% - 10px);
+    width: calc(50% - 10px);
+    height: -webkit-calc(100% - 12px);
+    height: -moz-calc(100% - 12px);
+    height: calc(100% - 12px);
+    border-right: 1px dotted #d1d1d1;
+    border-left: 0;
+    border-bottom: 1px dotted #d1d1d1;
+    border-radius: 0;
+    background-color: #ffffff;
+}
+
+.VgworkflowTree .for-loop .iterative-statement {
+    padding-top: 40px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:first-child {
+    padding-top: 60px;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:not(:first-child) {
+    padding-top: 13px;
+}
+
+.VgworkflowTree .for-loop .iterative-statement>li {
+    background-color: transparent;
+    padding-bottom: 0px;
+}
+
+/* .for-loop .iterative-statement>li>ul>li>ul {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    position: relative;
+} */
+
+.VgworkflowTree .for-loop .iterative-statement ul.statement-list:before {
+    border-left: 0;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:before {
+    content: '' !important;
+    position: absolute;
+    top: -32px;
+    left: 0;
+    height: -webkit-calc(100% + 42px);
+    height: -moz-calc(100% + 42px);
+    height: calc(100% + 42px);
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 50%;
+    display: inline-block;
+    border-radius: 5px 0 0 0px;
+    left: 0;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:last-child>li {
+    padding-bottom: 35px;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:last-child:before {
+    height: -webkit-calc(100% + 65px);
+    height: -moz-calc(100% + 65px);
+    height: calc(100% + 65px);
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px 0 0 5px;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:not(:first-child):before {
+    border-top: 0;
+    top: 0%;
+    height: -webkit-calc(100% + 42px);
+    height: -moz-calc(100% + 42px);
+    height: calc(100% + 42px);
+    border-radius: 0 0 5px 5px;
+}
+
+.VgworkflowTree .for-loop .statement-node {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.VgworkflowTree .for-loop .right-arrow-icon {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 10px solid #555;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    left: -9px;
+    top: 66px;
+    transform: rotate(-47deg);
+}
+
+.VgworkflowTree .for-loop .diamond-shape {
+    position: relative;
+}
+
+.VgworkflowTree .for-loop .end-node {
+    bottom: -25px !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 69px auto 0;
+    width: 25px;
+}
+
+.VgworkflowTree .for-loop .end-node .vgdot-end:before {
+    top: 30px;
+    bottom: inherit;
+}
+
+.VgworkflowTree .for-loop .left-arrow-icon {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #555;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    right: -10px;
+    top: 8px;
+}
+
+.VgworkflowTree .for-loop .root-node .end-node .insert-component.vgdot-end::after {
+    height: 82px;
+}
+
+.VgworkflowTree .for-loop .statement-node .statement-node {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.VgworkflowTree .for-loop .send-email .send-email-node {
+    min-width: auto;
+}
+
+.VgworkflowTree .for-loop .Switch-case .Switch-case:before {
+    display: none;
+}
+
+.VgworkflowTree .for-loop .Switch-case .Switch-case .end-node {
+    bottom: -54px !important;
+}
+
+.VgworkflowTree .for-loop .iterative-statement:last-child:before {
+    left: -1px;
+}
+
+.VgworkflowTree .for-loop {
+    padding-top: 0;
+}
+
+/* switch case styles */
+.VgworkflowTree .Switch-case {
+    padding-top: 10px;
+}
+.VgworkflowTree .Switch-case .group-case {
+    width: 100%;
+    display: inline-block;
+    padding: 15px 0 25px;
+    background-color: transparent;
+    position: relative;
+}
+
+
+.VgworkflowTree .Switch-case .group-case:before {
+    content: "";
+    display: inline-block;
+    border: 1px dotted #cccccc;
+    border-right: 0;
+    width: 50%;
+    min-height: 40px;
+    height: calc(100% - 60px);
+    position: absolute;
+    left: 0;
+    top: 48px;
+}
+
+.VgworkflowTree .Switch-case .group-case:after {
+    content: "";
+    display: inline-block;
+    border: 1px dotted #cccccc;
+    border-left: 0;
+    width: 50%;
+    min-height: 40px;
+    height: calc(100% - 60px);
+    position: absolute;
+    right: 0;
+    top: 48px;
+}
+
+.VgworkflowTree .Switch-case .group-case .group-case-statement {
+    background-color: transparent;
+    width: auto;
+    padding: 0;
+}
+
+.VgworkflowTree .Switch-case .group-case .group-case-statement>ul,
+.VgworkflowTree .Switch-case .group-case .group-case-statement>ul>li {
+    background-color: transparent;
+}
+
+.VgworkflowTree .switch-case-add-node i {
+    position: relative;
+    top: inherit;
+    left: inherit;
+    color: #474544;
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+.VgworkflowTree .Switch-case li.group-case-statement>a {
+    background: #fff;
+    z-index: 3;
+    border: 1px solid #f6ab6c;
+    color: #000;
+}
+
+.VgworkflowTree ul .end-node .insert-component::after {
+    height: 69px;
+}
+
+.VgworkflowTree ul .end-node .insert-component::before {
+    margin-top: -13px;
+}
+
+.VgworkflowTree ul .ending.end-node {
+    margin-top: 88px;
+}
+
+.VgworkflowTree ul .ending.end-node>.insert-component {
+    top: -87px;
+}
+
+.VgworkflowTree ul .ending.end-node>.insert-component::before {
+    margin-top: -8px;
+}
+
+.VgworkflowTree ul .ending.end-node>.insert-component::after {
+    height: 50px;
+}
+
+.VgworkflowTree ul .ending.end-node>a>.insert-component {
+    top: -50px;
+}
+
+.VgworkflowTree ul .ending.end-node>a>.insert-component::after {
+    height: 50px;
+}
+
+.condition-case>a>.insert-component:before {
+    margin-top: 0;
+}
+
+
+.m-t-13 {
+    margin-top: 13px !important;
+}
+
+.m-b-13 {
+    margin-bottom: 13px !important;
+}
+
+.m-t-14 {
+    margin-top: 14px !important;
+}
+
+.m-b-14 {
+    margin-bottom: 14px !important;
+}
+
+.m-t-15 {
+    margin-top: 15px !important;
+}
+
+.m-b-15 {
+    margin-bottom: 15px !important;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+.p-t-20 {
+    padding-top: 20px !important;
+}
+
+.p-b-20 {
+    padding-bottom: 20px !important;
+}
+
+.p-b-15 {
+    padding-bottom: 15px !important;
+}
+
+.p-b-14 {
+    padding-bottom: 14px !important;
+}
+
+.p-b-13 {
+    padding-bottom: 13px !important;
+}
+
+.p-b-12 {
+    padding-bottom: 12px !important;
+}
+
+.p-b-10 {
+    padding-bottom: 10px !important;
+}
+
+.p-t-40 {
+    padding-top: 40px !important;
+}
+
+.p-t-20 {
+    padding-top: 20px !important;
+}
+
+.p-t-15 {
+    padding-top: 15px !important;
+}
+
+.p-t-10 {
+    padding-top: 10px !important;
+}
+
+.p-t-0 {
+    padding-top: 0px !important;
+}
+
+.p-b-0 {
+    padding-bottom: 0px !important;
+}
+
+.for-loop .Switch-case::before {
+    height: 65px;
+    top: -19px;
+}
+
+.VgworkflowTree .vgdot-up-psend-email {
+    padding-top: 42px;
+}
+
+.VgworkflowTree .vgdot-up-psend-email>li {
+    padding-bottom: 0;
+}
+
+.VgworkflowTree .vgdot-up-psend-email>li .send-email-node .insert-component {
+    bottom: 43px;
+}
+
+.VgworkflowTree .line-58 .send-email-node .insert-component::after {
+    height: 58px;
+}
+
+.VgworkflowTree ul .ending.end-node.only-end-node {
+    margin-top: 50px;
+}
+
+.blank-dot {
+    min-height: 50px;
+    position: relative;
+}
+
+.blank-dot .insert-dot {
+    height: 100%;
+    position: unset;
+    display: block;
+    width: 100%;
+    max-width: 80px;
+    margin: 0 auto;
+    bottom: -32px;
+    z-index: 3;
+}
+
+.blank-dot .vgdot::before {
+    margin-top: -13px;
+}
+
+.blank-dot .vgdot-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 49.99%;
+    border-left: 1px solid #ccc;
+    width: 1px;
+    height: 60px;
+    z-index: -1;
+}
+
+.smart-form .VgworkflowTree * {
+    box-sizing: border-box;
+}
+
+/* .if-condition ul li:last-child .insert-component:after{
+    display: none;
+} */
+
+
+.for-loop .blank-dot {
+    /* margin-left: -2px; */
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.d-block {
+    display: block;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+
+
+.icon-drop-point:before {
+    -webkit-animation: anim-glow 2s ease infinite;
+    animation: anim-glow 2s ease infinite;
+}
+
+.vgError {
+    border: 1px dashed #d96058;
+    box-shadow: 0px 2px 0px 1px #d96058;
+}
+
+.vgActive {
+    border: 1px dashed #537d91 !important;
+    box-shadow: 0 2px 0 1px #537d91;
+}
+
+@-webkit-keyframes anim-glow {
+    0% {
+        box-shadow: 0 0 #3276b1;
+    }
+
+    100% {
+        box-shadow: 0 0 10px 8px transparent;
+        border-width: 2px;
+    }
+}
+
+@keyframes anim-glow {
+    0% {
+        box-shadow: 0 0 #3276b1;
+    }
+
+    100% {
+        box-shadow: 0 0 10px 8px transparent;
+        border-width: 2px;
+    }
+}
+
+/*=======================================================================================*/
+#tabNodes * {
+    box-sizing: border-box
+}
+
+/*body {
+    font-family: "Lato", sans-serif;
+}*/
+
+/* Style the tab */
+#tabNodes .tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+    /* Style the buttons inside the tab */
+    #tabNodes .tab button {
+        display: block;
+        background-color: inherit;
+        /*color: black;*/
+        padding: 10px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        /*font-size: 17px;*/
+    }
+
+    /* Change background color of buttons on hover */
+    #tabNodes .tab p:hover {
+        background-color: #ddd;
+    }
+
+    /* Create an active/current "tab button" class */
+    #tabNodes .tab p.active {
+        background-color: #ccc;
+    }
+
+/* Style the tab content */
+#tabNodes .tabcontent {
+    float: left;
+    padding: 31px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}
+
+#tabNodes span > input {
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+#tabNodes .tab > p {
+    padding: 2px 15px;
+}
+
+.vgActive {
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.vgError {
+    box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.2);
+}
+
+
+/*Mobile view media query ==================================================================================================== */
+@media all and (max-width:767px) {
+    .VgworkflowTree {
+        font-size: 12px;
+    }
+
+
+
+    .VgworkflowTree ul ul ul {
+        display: block
+    }
+
+    .VgworkflowTree ul ul::before {
+        /* content: none */
+    }
+
+    .VgworkflowTree li {
+        text-align: left;
+        padding: 5px 0;
+    }
+
+
+    .VgworkflowTree>ul>li:first-child>ul>li {
+        padding-left: 0;
+    }
+
+    .VgworkflowTree ul.if-condition {
+        padding-top: 0 !important;
+    }
+
+    .VgworkflowTree li:only-child::before {
+        /* border-bottom: 1px solid #ccc; */
+    }
+
+    .VgworkflowTree li::after,
+    .VgworkflowTree li:last-child::before {
+        border-right: none;
+        border-left: none;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /*  .condition-case li::before,
+     .condition-case li::after {
+        height: 97%;
+
+    } */
+
+    .VgworkflowTree ul ul::before {
+        content: "";
+        height: 102%;
+        width: 1px;
+        left: 5px;
+        top: -4px;
+    }
+
+    .insert-component {
+        left: 0;
+        height: 30px;
+        bottom: -40px;
+    }
+
+    .vgdot::before {
+        bottom: 50%;
+        top: 50%;
+    }
+
+    .vgdot.start {
+        left: 15px;
+    }
+
+    .VgworkflowTree ul .insert-component.start::after {
+        height: 44px;
+        top: 0px;
+    }
+
+    .VgworkflowTree li a {
+        max-width: 200px;
+        width: auto;
+    }
+
+    .VgworkflowTree li a:before {
+        content: "";
+        position: absolute;
+        width: 13px;
+        height: 1px;
+        background: #d1d1d1;
+        left: -14px;
+        top: 13px;
+    }
+
+    .VgworkflowTree ul ul .insert-component::after {
+        height: 53px;
+        top: -10px;
+    }
+
+
+    .VgworkflowTree ul {
+        padding-left: 0px;
+        padding-top: 60px;
+    }
+
+    .VgworkflowTree li {
+        text-align: center;
+
+    }
+
+    .VgworkflowTree li a {
+        margin: 0;
+    }
+
+    .VgworkflowTree ul ul::before {
+        display: none;
+    }
+
+    .vgdot.start {
+        left: 0;
+        height: 44px;
+        bottom: -44px;
+    }
+
+    .VgworkflowTree li a:before {
+        display: none;
+    }
+
+    .end-node {
+        margin-top: 75px;
+    }
+
+    .VgworkflowTree ul.last:after,
+    .VgworkflowTree ul.last ul:after {
+        display: none;
+    }
+
+    .VgworkflowTree ul.last ul {
+        padding-bottom: 25px;
+    }
+
+    .VgworkflowTree ul.last {
+        border: 1px dotted #d1d1d1;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+
+    .dotted-line {
+        width: 90%;
+        margin: 7px auto 0;
+    }
+
+    .dotted-line>.set-condition::before {
+        content: none !important;
+    }
+
+    .VgworkflowTree>ul>li:first-child>ul>li:after {
+        height: 100%;
+    }
+
+    .VgworkflowTree>ul>li:first-child>ul>li::before {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .VgworkflowTree ul .send-email {
+        padding-bottom: 60px;
+        padding-top: 3px !important;
+    }
+
+    /*If condition css*/
+    li.set-condition {
+        position: relative;
+        padding: 0 15px !important;
+    }
+
+    li.set-condition>ul {
+        padding-top: 20px;
+    }
+
+    li.set-condition:after {
+        content: "";
+        display: inline-block !important;
+        height: calc(100% - 88px);
+        width: 1px;
+        background-color: #cccccc;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        z-index: 2;
+    }
+
+
+    li.set-condition:before {
+        content: "" !important;
+        display: inline-block !important;
+        width: 50%;
+        position: absolute;
+        left: 15px;
+        top: 31px;
+        z-index: 1;
+    }
+
+    li.set-condition li.condition-case {
+        position: relative;
+        background: none;
+        padding: 25px 5px 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    li.set-condition li.condition-case:before {
+        content: "" !important;
+        display: inline-block !important;
+        background-color: #cccccc;
+        border: 0;
+        width: 50% !important;
+        height: 1px;
+        position: absolute;
+        left: 0 !important;
+        top: 39px;
+    }
+
+
+    li.condition-case>a {
+        margin: 0;
+    }
+
+
+    /*  li:first-child::after {
+        height: 100%;
+    } */
+
+    .end-node .grey {
+        top: -67px;
+        height: 42px;
+        bottom: 0;
+    }
+
+    /* .tree>ul>li:first-child>ul>li>ul>li>ul>li>ul {
+        border: none;
+        margin-top: 12px;
+    } */
+
+    .VgworkflowTree li.set-condition a.end-node {
+        width: auto;
+        position: relative !important;
+        left: 0 !important;
+        margin-top: 10px;
+        margin-left: 0
+    }
+
+    .set-condition-node {
+        top: -43px;
+    }
+
+    .VgworkflowTree>ul>li:only-child::after {
+        height: 100%;
+    }
+
+
+
+    /*common class*/
+    .if-condition ul li::after,
+    .Switch-case ul li::after {
+        border: none
+    }
+
+    /* .dotted-line-padding {
+        padding-bottom: 0;
+    } */
+    /*  .Switch-case .send-email {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    } */
+
+    /* .VgworkflowTree ul ul ul:last-child li:not([child]):before {
+         border-bottom: none; 
+    } */
+
+    /*Switch css*/
+    .Switch-case>li>ul li:last-child .insert-component {
+        /* display: none */
+    }
+
+    /* for loop responsive */
+    .VgworkflowTree .for-loop {
+        padding-top: 0 !important;
+    }
+
+    .VgworkflowTree .for-loop ul {
+        /* padding-top: 18px!important; */
+    }
+
+    .VgworkflowTree .for-loop>li>ul {
+        padding-top: 0 !important;
+    }
+
+    .VgworkflowTree .for-loop a {
+        width: auto;
+    }
+
+    .VgworkflowTree .for-loop>li {
+        padding-bottom: 30px;
+    }
+
+    .VgworkflowTree .for-loop .root-node {
+        padding: 0 5px 46px 5px;
+    }
+
+    .VgworkflowTree .for-loop .root-node:after {
+        height: calc(100% - 24px);
+    }
+
+    .VgworkflowTree .for-loop .statement-node {
+        padding-bottom: 30px;
+    }
+
+    .VgworkflowTree .for-loop .root-node .end-node {
+        bottom: -66px !important;
+    }
+
+    .VgworkflowTree .for-loop .end-node .insert-component {
+        height: 29px;
+    }
+
+    .VgworkflowTree .for-loop .end-node .insert-component:after {
+        top: 7px;
+        height: 29px !important;
+    }
+
+    .VgworkflowTree .for-loop .root-node .end-node .insert-component.vgdot-end::after {
+        height: 82px !important;
+    }
+
+    .VgworkflowTree .for-loop .loop-iteration-list .group-statement:before,
+    .VgworkflowTree .for-loop .loop-iteration-list .group-statement:after {
+        height: -webkit-calc(100%);
+        height: -moz-calc(100%);
+        height: calc(100%);
+        top: 0;
+    }
+
+    .VgworkflowTree .for-loop .iterative-statement:last-child>li>.action-node .insert-component:after {
+        height: 62px;
+    }
+
+    .VgworkflowTree .for-loop .iterative-statement:last-child>.set-condition:before {
+        border-top: none;
+        border-bottom: none;
+    }
+
+    .VgworkflowTree .for-loop .iterative-statement:before {
+        height: calc(100% + 84px);
+        top: -31px;
+    }
+
+    .VgworkflowTree .for-loop>.set-condition:not([child]):before {
+        border-top: none;
+    }
+
+    /* swich case ul */
+    .VgworkflowTree .Switch-case .group-case {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .VgworkflowTree .Switch-case .group-case:before {
+        /* height: calc(100%); */
+        top: 33px;
+        height: calc(100% - 35px);
+    }
+
+    .VgworkflowTree .Switch-case .group-case:after {
+        /* height: calc(100%); */
+        top: 33px;
+        height: calc(100% - 35px);
+    }
+
+    .VgworkflowTree .Switch-case .condition-case:not([child]):before {
+        top: 33%;
+    }
+
+   
+
+
+    .VgworkflowTree .Switch-case .group-case .set-condition:not([child]):before {
+        /* border-bottom: none;
+        border-top: none; */
+    }
+
+    .VgworkflowTree .Switch-case .Switch-case.dotted-line-padding>.set-condition::before {
+
+        border-top: 1px solid #ccc ;
+    }
+
+    .VgworkflowTree .Switch-case .group-case-statement>.dotted-line-padding>.set-condition::after {
+        background: none;
+    }
+
+
+    .VgworkflowTree .Switch-case .end-node .insert-component {
+        top: -40px;
+    }
+
+    .VgworkflowTree .Switch-case .end-node .insert-component:before {
+        margin-top: -22px !important;
+    }
+
+    .VgworkflowTree ul .ending.end-node.only-end-node {
+        /* margin-top: 80px; */
+    }
+
+    .vgdot::before {
+        margin-top: -10px;
+    }
+
+    .VgworkflowTree li.set-condition:last-child:before {
+        border-radius: 0 5px 0px 0;
+    }
+
+    .VgworkflowTree>ul>li:first-child>ul>li:after {
+        height: calc(100% + 50px);
+    }
+
+    .VgworkflowTree>ul>li:first-child>ul>li::before {
+        height: calc(100% + 49px);
+    }
+
+    .VgworkflowTree .if-condition li.set-condition:after {
+        height: calc(100% - 44px);
+        top: 22px;
+    }
+
+    .VgworkflowTree .if-condition li.set-condition::before {
+        height: calc(100% - 44px);
+        top: 22px;
+    }
+
+    .VgworkflowTree .if-condition .if-condition li.set-condition:after {
+        /* height: calc(100% - 150px); */
+    }
+
+    .VgworkflowTree li.set-condition>li.set-condition:after {
+        background: none;
+    }
+
+
+
+
+    .VgworkflowTree .Switch-case>li.set-condition:after {
+        height: calc(100%);
+        top: 31px;
+    }
+
+    .VgworkflowTree .Switch-case {
+        padding-top: 2px;
+        margin-top: 0px;
+    }
+
+
+    .VgworkflowTree .Switch-case>li.set-condition:last-child:before,
+    .VgworkflowTree .Switch-case>li.set-condition:last-child::after {
+        height: calc(100% - 52px);
+    }
+
+
+    .VgworkflowTree .Switch-case .Switch-case>li.set-condition::after {
+        height: calc(100% - 81px);
+    }
+
+    .Switch-case .group-case .group-case-statement>ul>li:only-child {}
+
+
+    .VgworkflowTree .Switch-case li.set-condition:before {
+        width: 47%;
+    }
+
+    .VgworkflowTree ul ul .insert-component::after {
+        height: 70px;
+    }
+
+    .VgworkflowTree ul .ending.end-node>.insert-component {
+        left: -1px;
+    }
+
+    .VgworkflowTree .if-condition>.set-condition>.end-node {
+        z-index: 2;
+    }
+
+    .VgworkflowTree .if-condition>.set-condition>.end-node .insert-component {
+        top: -59px;
+    }
+
+    .VgworkflowTree .if-condition>.set-condition>.end-node .insert-component:after {
+        height: 46px;
+        top: 14px;
+    }
+
+    .VgworkflowTree .if-condition .Switch-case li.set-condition:after {
+        height: calc(100% - 52px)!important;
+        top: 21px!important;
+    }
+
+    .VgworkflowTree .Switch-case .group-case .dotted-line-padding .set-condition:not([child]):before {
+        /* border: none; */
+        /* border-top: 1px solid #ccc; */
+    }
+
+    .VgworkflowTree .if-condition .Switch-case .group-case .dotted-line-padding .set-condition:not([child]):before {
+        border: none;
+        /* border-top: 1px solid #ccc; */
+    }
+
+    .inner-wrapper,
+    .outer-wrapper i {
+        display: none;
+    }
+
+
+    .switch-case-add-node i{
+        display: inline-block;
+    }
+
+    .outer-wrapper {
+        padding: 5px 10px;
+    }
+}
+
+@media all and (min-width:768px) {
+    .VgworkflowTree {
+        min-width: 1220px;
+    }
+
+    #vgworkflowholder {
+        overflow: auto;
+    }
+
+    .VgworkflowTree ul .insert-component.no-vline::after {
+        border-left: 0;
+    }
+
+    .VgworkflowTree .if-condition {
+        padding-top: 17px !important;
+    }
+
+}

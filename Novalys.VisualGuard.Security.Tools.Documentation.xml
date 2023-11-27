@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.Tools.Documentation</name>
+    </assembly>
+    <members>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.iTextSharp.iTextSharpHelper.AddProperties(Novalys.VisualGuard.Security.Tools.Documentation.iTextSharp.NodeSection,System.Collections.Generic.Dictionary{System.String,Novalys.VisualGuard.Security.Tools.Documentation.VGItem})">
+            <summary>
+            
+            </summary>
+            <param name="section"></param>
+            <param name="values"></param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings">
+            <summary>
+            Gets or sets a PivotMatrix Settings
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.#ctor(System.Collections.Generic.List{Novalys.VisualGuard.Security.Membership.VGApplication})">
+            <summary>
+            
+            </summary>        
+            <param name="lstApplications">List of applications for the permissionMatrix Scope</param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.Applications">
+            <summary>
+            Gets or sets a List of applications for the permissionMatrix Scope
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowUsersAsRows">
+            <summary>
+            Gets or sets if want to show Users as rows.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowGroupsAsRows">
+            <summary>
+            Gets or sets if want to show groups as rows.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowRolesAsRows">
+            <summary>
+            Gets or sets if want to show roles as rows.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowPSAsRows">
+            <summary>
+            Gets or sets if want to show PS as rows.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowPermissions">
+            <summary>
+            Gets or sets if you want to include permissions as access rights for given entities (Column of the sheet).
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowRoles">
+            <summary>
+            Gets or sets if you want to include roles as access rights for given entities (Column of the sheet).
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowGroups">
+            <summary>
+            Gets or sets if you want to include groups as access rights for given entities (Column of the sheet).
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowOnlyWhenRelationExists">
+            <summary>
+            Gets or sets whether to only show the items related to other items
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowGlobalSheet">
+            <summary>
+            Creates a global sheet containing all applications.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowApplicationSpecificSheet">
+            <summary>
+            Creates a separte sheet for each application.(Sheet per application)
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowEntityCountPerMatrixItem">
+            <summary>
+            Shows the number of items related to each entity. Gets or sets if users count per role need to be displayed in sheet.
+            Ex. RoleA granted to 10 users, PermissionA granted to 10 users.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowUsersGroupsDependencySheet">
+            <summary>
+            Gets or sets if 'matrix - showing dependencies between users and groups' need to be shown as a separate sheet
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings.ShowUsersGroupsDependencyInEachApplicationSheet">
+            <summary>
+            Gets or sets if 'matrix - showing dependencies between users and groups' need to be shown in each application sheet   
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager">
+            <summary>
+            Represents a manager to generate documentation for VG entities.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.ProgressReporter">
+            <summary>
+            Gets or sets progress reporter for Documentation Manager
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GetMemoryStreamByFile(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="folderPath"></param>
+            <param name="fileName"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.String,Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationItem,Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject)">
+            <summary>
+            Generates documentation for given entity.
+            </summary>
+            <param name="filePath">FilePath where to generate documentation</param>
+            <param name="documentationItems">
+            Items to include in the documentation (ex. ApplicationDetails,ApplicationRoles, Permissions, PermissionSets etc).
+            It can contain multiple items. (Enum)
+            </param>
+            <param name="entity">
+            Entity object for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)
+            </param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.String,Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationItem,System.Collections.Generic.List{Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject})">
+            <summary>
+            Generates documentation for given entities
+            </summary>
+            <param name="filePath">FilePath where to generate documentation</param>
+            <param name="documentationItems">
+            Items to include in the documentation (ex. ApplicationDetails,ApplicationRoles, Permissions, PermissionSets etc).
+            It can contain multiple items. (Enum)
+            </param>
+            <param name="entities">
+            Entity objects for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)
+            </param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.IO.Stream,Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationItem,Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject)">
+            <summary>
+            Generates documentation for given entity
+            </summary>
+            <param name="docStream">Stream to generate documentation</param>
+            <param name="documentationItems">
+            Items to include in the documentation (ex. ApplicationDetails,ApplicationRoles, Permissions, PermissionSets etc).
+            It can contain multiple items. (Enum)
+            </param>
+            <param name="entity">
+            Entity object for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)
+            </param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.IO.Stream,Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationItem,System.Collections.Generic.List{Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject})">
+            <summary>
+            Generates documentation for given entities
+            </summary>
+            <param name="docStream">Stream to generate documentation</param>
+            <param name="documentationItems">
+            Items to include in the documentation (ex. ApplicationDetails,ApplicationRoles, Permissions, PermissionSets etc).
+            It can contain multiple items. (Enum)
+            </param>
+            <param name="entities">
+            Entity objects for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)
+            </param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.String,Novalys.VisualGuard.Security.Documentation.VGDocumentationSettings,Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject)">
+            <summary>
+            Generates documentation for given entity
+            </summary>
+            <param name="filePath">FilePath where to generate documentation</param>
+            <param name="docSettings">Documentation settings</param>
+            <param name="entity">Entity object for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.String,Novalys.VisualGuard.Security.Documentation.VGDocumentationSettings,System.Collections.Generic.List{Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject})">
+            <summary>
+            Generates documentation for given entities. 
+            </summary>
+            <param name="filePath">FilePath where to generate documentation</param>
+            <param name="docSettings">Documentation settings</param>
+            <param name="entities">Entity objects for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.IO.Stream,Novalys.VisualGuard.Security.Documentation.VGDocumentationSettings,Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject)">
+            <summary>
+            Generates documentation for given entity
+            </summary>
+            <param name="docStream">stream where to generate documentation</param>
+            <param name="docSettings">Documentation settings</param>
+            <param name="entity">Entity object for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGDocumentationManager.GenerateDocumentation(System.IO.Stream,Novalys.VisualGuard.Security.Documentation.VGDocumentationSettings,System.Collections.Generic.List{Novalys.VisualGuard.Security.Membership.VGIDocumentationMembershipObject})">
+            <summary>
+            Generates documentation for given entities.
+            </summary>
+            <param name="docStream">stream where to generate documentation</param>
+            <param name="docSettings">Documentation settings</param>
+            <param name="entities">Entity objects for which want to generate documentation. (ex. VGMembershipUser, VGApplication, VGRepository etc.)</param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGEntityBase.ProgressReporter">
+            <summary>
+            Gets or sets progress reporter
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager">
+            <summary>
+            Represents a manager to generate permission matrix for VG entities. 
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.#ctor(Novalys.VisualGuard.Security.VGSecurityRuntime)">
+            <summary>
+            
+            </summary>
+            <param name="runtime">current VGSecurityRuntime</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.#ctor(Novalys.VisualGuard.Security.VGSecurityRuntime,Novalys.VisualGuard.Security.Tools.Documentation.PivotMatrix.VGPivotMatrixSettings)">
+            <summary>
+            
+            </summary>
+            <param name="runtime"></param>
+            <param name="settings"></param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.Settings">
+            <summary>
+            Gets a Pivot Matrix settings
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.ProgressReporter">
+            <summary>
+            Gets or sets progress reporter for pivot matrix
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.GeneratePivotMatrix(System.String,System.Collections.Generic.List{Novalys.VisualGuard.Security.Permission.VGIPermissionAuditSupported})">
+            <summary>
+            Generates a pivot matrix for given members.
+            </summary>
+            <param name="filePath">Filepath where you want to generate matrix</param>
+            <param name="members">Members for which the matrix need to be generated</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Tools.Documentation.VGPivotMatrixManager.GeneratePivotMatrix(System.IO.Stream,System.Collections.Generic.List{Novalys.VisualGuard.Security.Permission.VGIPermissionAuditSupported})">
+            <summary>
+            Generates a pivot matrix for given members.
+            </summary>
+            <param name="stream">Stream where you want to generate matrix </param>
+            <param name="members">Members for which the matrix need to be generated</param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Tools.Documentation.VGResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGResource.logo_vg_lg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Tools.Documentation.VGResource.VisualGuardHorizontal">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

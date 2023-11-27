@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Novalys.VisualGuard.Security.File</name>
+    </assembly>
+    <members>
+        <member name="T:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1">
+            <summary>
+            Provides utility functions for managing <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> in a repository based on file.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.#ctor(Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection,System.String,System.Boolean)">
+            <summary>
+            Creates an instance of the utility class with a specified configuration context.
+            </summary>
+            <param name="repository">the repository connection asscociated to the manager.</param>
+            <param name="fileExtension">the extension of file used by this instance to save the information.</param>
+            <param name="cachedItems">a <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationCollection"/> object in which the repository items are cached.</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.ForceToRefreshList">
+            <summary>
+            Forces the list already to be refreshed on next refresh
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Save(Novalys.VisualGuard.Security.Common.VGIInformation,System.String)">
+            <summary>
+            Saves the information in the file repository.
+            </summary>
+            <param name="item">a <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> containing the new information if the credential</param>
+            <exception cref="T:Novalys.VisualGuard.Security.Repository.VGConcurrencyException">The data of the item has been changed in the repository since the last read of the item.</exception>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Save(Novalys.VisualGuard.Security.Common.VGIInformation,System.Boolean)">
+            <summary>
+            Saves the information in the file repository.
+            </summary>
+            <param name="checkConcurrency">true to check concurrency</param>
+            <param name="item">a <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> containing the new information if the credential</param>
+            <exception cref="T:Novalys.VisualGuard.Security.Repository.VGConcurrencyException">The data of the item has been changed in the repository since the last read of the item.</exception>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Get(System.String)">
+            <summary>
+            Gets the information for an item.
+            </summary>
+            <param name="id">a string value identifying the item.</param>
+            <returns>returns an initialized <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/></returns>
+            <exception cref="T:Novalys.VisualGuard.Security.Common.VGItemNotFoundException">the item identifying by the specified id does not exist.</exception>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Get(System.String,System.Boolean)">
+            <summary>
+            Gets the information for an item.
+            </summary>
+            <param name="id">a string value identifying the item.</param>
+            <param name="useCacheDuration">true to ignore the cache duration; false otherwise.</param>
+            <returns>returns an initialized <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/></returns>
+            <exception cref="T:Novalys.VisualGuard.Security.Common.VGItemNotFoundException">the item identifying by the specified id does not exist.</exception>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Get(System.Guid)">
+            <summary>
+            Gets the information for an item.
+            </summary>
+            <param name="id">The <see cref="T:System.Guid"/> identifying the item.</param>
+            <returns>returns an initialized <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Get(System.Guid,System.Boolean)">
+            <summary>
+            Gets the information for an item.
+            </summary>
+            <param name="id">The <see cref="T:System.Guid"/> identifying the item.</param>
+            <param name="useCacheDuration">true to use cache duration for the item in memory; false otherwise.</param>
+            <returns>returns an initialized <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.GetAllItems">
+            <summary>
+            Gets the unsorted list of items stored in the repository.
+            </summary>
+            <returns>A <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationCollection"/> containing the list of items.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.GetAllItems(System.Int32,System.Int32,System.Int32@,Novalys.VisualGuard.Security.Common.VGInformationComparer)">
+            <summary>
+            Gets a page of items stored in a repository beginning at the specified page index.
+            </summary>
+            <param name="pageIndex">The index of the page of results to return. pageIndex is zero-based.</param>
+            <param name="pageSize">The size of the page of results to return.</param>
+            <param name="totalRecords">The total number of matched users.</param>
+            <returns>A <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationCollection"/> that contains a page of <paramref name="pageSize"/> objects beginning at the page specified by <paramref name="pageIndex"/>.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Delete(Novalys.VisualGuard.Security.Common.VGIInformation)">
+            <summary>
+            Deletes the <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> in the file repository.
+            </summary>
+            <param name="item">The <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> to delete</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Delete(System.String)">
+            <summary>
+            Deletes the <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> identified by the specified id in the file repository.
+            </summary>
+            <param name="Id">The id of the information to delete</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Delete(System.Guid)">
+            <summary>
+            Deletes the <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> identified by the specified id in the file repository.
+            </summary>
+            <param name="Id">The id of the information to delete</param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Connection">
+            <summary>
+            Gets the <see cref="T:Novalys.VisualGuard.Security.Repository.VGIRepositoryConnection"/> representing the connection to the repository associated to this manager.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.IsValueUnique(System.String,System.String,System.Boolean)">
+            <summary>
+            Indicates if the value will be unique for the specified property in the repository
+            </summary>
+            <param name="value">the value to compare</param>
+            <param name="propertyName">The name of the property. this property must be public and must return a string value.</param>
+            <param name="ignoreCase">true if the case must be ignore, false otherwise.</param>
+            <returns>true if the value does not exist in the repostiory, false otherwise.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.GetSpecialValue(System.String)">
+            <summary>
+            Gets a special value (i.e.: count returns the number of items  stored in the repository) from the repository
+            </summary>
+            <param name="value">the value to compare</param>
+            <param name="propertyName">The name of the property</param>
+            <returns>The special value.</returns>
+            <remarks>this method supports only the special value "count".</remarks>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.FindItems(System.String,System.String,System.Int32,System.Int32,System.Int32@,System.Boolean)">
+            <summary>
+            Gets a collection of <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> where the property specified by <paramref name="propertyName"/> contains the specified value to match.
+            </summary>
+            <param name="propertyName">The name of the property. if the value is null, use the repository Id</param>
+            <param name="valueToMatch">the value to match. This value must be a valid regular expression.</param>
+            <param name="pageIndex">The index of the page of results to return. pageIndex is zero-based.</param>
+            <param name="pageSize">The size of the page of results to return.</param>
+            <param name="totalRecords">The total number of matched users.</param>
+            <returns>A <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationCollection"/> that contains a page of <paramref name="pageSize"/> objects beginning at the page specified by <paramref name="pageIndex"/>.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.FindItems(System.String,System.String[],System.Int32,System.Int32,System.Int32@,System.Boolean)">
+            <summary>
+            Gets a collection of <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> where the property specified by <paramref name="propertyName"/> contains the specified value to match.
+            </summary>
+            <param name="propertyName">The name of the property. if the value is null, use the repository Id</param>
+            <param name="valuesToMatch">the value to match. This value must be a valid regular expression.</param>
+            <param name="pageIndex">The index of the page of results to return. pageIndex is zero-based.</param>
+            <param name="pageSize">The size of the page of results to return.</param>
+            <param name="totalRecords">The total number of matched users.</param>
+            <returns>A <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationCollection"/> that contains a page of <paramref name="pageSize"/> objects beginning at the page specified by <paramref name="pageIndex"/>.</returns>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.Comparer">
+            <summary>
+            Gets the comparer used to compare to item
+            </summary>
+            <remarks>by default the methods compare the <see cref="P:Novalys.VisualGuard.Security.Common.VGIInformation.RepositoryId"/> property of the items.</remarks>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileInformationManager`1.GetStatistic">
+            <summary>
+            Gets an item from the cache
+            </summary>
+            <param name="repositoryId">the id of the item</param>
+            <param name="includeExpiredItems">true when you want to include all items event expired items. false otherwise.</param>
+            <returns>the item corresponding to the specified id whether the item is not expired. null when the item does not exist or is expired.</returns>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.Common.VGFileSerializationHelper">
+            <summary>
+            <para>Helper class to do all the serialization work.</para>
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileSerializationHelper.Save(System.Object,System.String,Novalys.VisualGuard.Security.Common.Crypto.VGCryptoManager)">
+            <summary>
+            Saves a <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> object in the given file.
+            </summary>
+            <param name="info">The <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> object to save.</param>
+            <param name="fileName">The full path of the file in which the information must be saved.</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileSerializationHelper.Get(System.String,Novalys.VisualGuard.Security.Common.Crypto.VGCryptoManager)">
+            <summary>
+            Deserialize a <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/> from the given file.
+            </summary>
+            <param name="fileName">The full path of the file in which the information is stored.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileSerializationHelper.Delete(System.String)">
+            <summary>
+            Delete the given file.
+            </summary>
+            <param name="fileName">the full path of the file to delete.</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGFileSerializationHelper.Replace(System.IO.FileInfo,System.IO.FileInfo)">
+            <summary>
+            Replace the destination file by the source file and delete the source file.
+            </summary>
+            <param name="sourceFileName">the full path of the file to copy.</param>
+            <param name="destFileName">the full path of the file that will be replaced.</param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException">
+            <summary>
+            Exception thrown when the file does not contains a valid serialized data.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException.#ctor(System.String)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a newly created instance of <see cref="T:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException"></see>
+            </summary>
+            <param name="errorMessage">Error message from caller</param>
+            <param name="innerException">Any nested exception</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Common.VGInvalidSerializedFileException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+            <param name="info">The object that holds the serialized object data</param>
+            <param name="context">The contextual information about the source or destination</param>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData">
+            <summary>
+            Configuration data for a repository based on file.
+            </summary>
+            
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.#ctor">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData"/> class.</para>
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.#ctor(System.String,System.String)">
+            <summary>
+            <para>Initialize a new instance of the <see cref="T:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData"/> class with a name and a path.</para>
+            </summary>
+            <param name="name">
+            <para>The name of the <see cref="T:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData"/>.</para>
+            </param>
+            <param name="path">
+            <para>The name of the <see cref="T:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData"/>.</para>
+            </param>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.Path">
+            <summary>
+            The path of the repository.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.TypeName">
+            <summary>
+            <para>Gets or sets the <see cref="T:System.Type"/> name of the node used in the Visual Guard Console.</para>
+            </summary>
+            <value>
+            <para>The type name of the node used in the Visual Guard Console. The default is an empty string.</para>
+            </value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.DisplayInformation">
+            <summary>
+            <para>Gets the information about the repository.</para>
+            </summary>
+            <value>
+            <para>The information about the repository</para>
+            </value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.SupportedAuthenticationModes">
+            <summary>
+            Gets or sets the authentication modes supported by the repository.
+            </summary>
+            <value>The configured repository path.</value>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.Configuration.VGFileRepositoryData.RepositoryConnectionTypeName">
+            <summary>
+            Returns the type of the repository connection.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileDbConnection.OpenModifiedTransaction">
+            <summary>
+            When you Create / Update / Delete file, we open a real transaction
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection">
+            <summary>
+            Represents the information about the file authentication repository
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.IsOnline">
+            <summary>
+            Checks connection is Online.
+            </summary>
+            <returns><c>true</c> VGRepository is online, <c>false</c>VGRepository is offline, </returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.IsValidRepository(System.Boolean)">
+            <summary>
+            Checks if the database contains a valid repository.
+            </summary>
+            <param name="throwOnError">true if you want to generate an exception, false otherwise.</param>
+            <returns><c>true</c> if the directory contains a valid repository, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.IsValidRepository">
+            <summary>
+            Checks if the repository is valid.
+            </summary>
+            <returns>true if the repository is valid, false otherwise.</returns>
+            <remarks>This method does not throw an error if the repository is not valid</remarks>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.IsValidRepository(System.Boolean,System.Boolean)">
+            <summary>
+            Checks if the database contains a valid repository.
+            </summary>
+            <param name="throwOnError">true if you want to generate an exception, false otherwise.</param>
+            <param name="useCache">indicates whether the cache must be used</param>
+            <returns><c>true</c> if the directory contains a valid repository, <c>false</c> otherwise.</returns>
+            <exception cref="T:System.Security.SecurityException">The caller does not have the permission to access to the reporistory in read/write mode</exception>
+            <exception cref="T:Novalys.VisualGuard.Security.VGRepositoryVersionNotSupportedException">The repository is not compatible with the version of Visual Guard runtime</exception>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.RepositoryPath">
+            <summary>
+            Gets the path of the repository
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.GetObject``1(System.String,Novalys.VisualGuard.Security.Common.Crypto.VGCryptoManager)" -->
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.GetAllItems(Novalys.VisualGuard.Security.Common.VGCache,System.String)">
+            <summary>
+            Gets the list of items stored in the repository.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.RefreshAllItems(Novalys.VisualGuard.Security.Common.VGCache,System.String,System.Boolean)">
+            <summary>
+            Refreshes a collection of items and returns the modification from this collection.
+            </summary>
+            <param name="currentItems">the list of current items</param>
+            <param name="fileExtension">the extension of the files in which the info are stored.</param>
+            <param name="supportedType">the type of <see cref="T:Novalys.VisualGuard.Security.Common.VGIInformation"/></param>
+            <param name="returnList">A boolean value indicating whether the list of modifications since the last refresh must be returned.</param>
+            <returns>an array of <see cref="T:Novalys.VisualGuard.Security.Common.VGInformationChangedEventArgs"/> containing the list of modifications.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.IsDatabaseObjectsExist">
+            <summary>
+            Checks whether repository objects (tables, files...) are correctly created in the repository store.
+            </summary>
+            <returns>One of the <see cref="!:VGDatabaseExistenceStatus"/> values.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.ChangeCredentials(System.String,System.String)">
+            <summary>
+            Changes the credentials used to connect to the repository
+            </summary>
+            <param name="name">the name of the credentials</param>
+            <param name="password">the password of the credentials</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.RestoreOrginalCredentials">
+            <summary>
+            Restores the credential as defined in the configuration file
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.ExecuteFile(System.String,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Executes instructions in file after replacing some values 
+            </summary>
+            <param name="file">the path of the file</param>
+            <param name="valuesToReplace">A string array containing values to replace</param>
+            <param name="newValues">A string array containing the value that will replace values indicates in the valuesToReplace</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.CanCreateRepository(System.Exception@)">
+            <summary>
+            Checks if a repository structure can be created
+            </summary>
+            <returns>true if the repository can be created, false if it is not possible.</returns>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.DeleteRepository">
+            <summary>
+            Deletes all the contents of a repository.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.CheckRepositoryVersion">
+            <summary>
+            Checks the version of the repository and returns a <see cref="T:Novalys.VisualGuard.Security.Repository.VGRepositoryUpgradeAction"/> indicating the upgrade action needed.
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.UseUpdateMethod">
+            <summary>
+            Indicates if the repository supports the update method when the repository id is changed
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.GetDBUserName">
+            <summary>
+            Gets the current database user name
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.WriteLog(Novalys.VisualGuard.Security.Logging.VGLogEntry)">
+            <summary>
+            Writes a log message in the repository
+            </summary>
+            <param name="log">a <see cref="T:Novalys.VisualGuard.Security.Logging.VGLogEntry"/> representing the message to store.</param>
+            <param name="formatter">A <see cref="T:Novalys.VisualGuard.Security.Common.VGILogFormatter"/> object used to format the message.</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.ImportLog(Novalys.VisualGuard.Security.Logging.VGLogEntry,Novalys.VisualGuard.Security.Common.VGILogFormatter)">
+            <summary>
+            Write the message log with the VGLogEntry date in VGrepository
+            </summary>
+            <param name="log">a <see cref="T:Novalys.VisualGuard.Security.Logging.VGLogEntry"/> representing the message to store.</param>
+            <param name="formatter">A <see cref="T:Novalys.VisualGuard.Security.Common.VGILogFormatter"/> object used to format the message.</param>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.GetNow">
+            <summary>
+            Returns the date and the time of the server
+            </summary>
+            <returns>the date of the server expressed as UTC</returns>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.LogEnabled">
+            <summary>
+            Indicates wether th log is enabled for the repository
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.Novalys#VisualGuard#Security#Repository#VGIRepositoryConnection#ClearLog(System.DateTime)">
+            <summary>
+            Clears all log entries
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.Novalys#VisualGuard#Security#Repository#VGIRepositoryConnection#ClearLog(System.Guid,System.DateTime)">
+            <summary>
+            Clears all log entries of an application
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.AllowsWindowsGroup">
+            <summary>
+            Indicates whether license allows Windows Group
+            </summary>
+        </member>
+        <member name="P:Novalys.VisualGuard.Security.Files.Repository.VGFileRepositoryConnection.Novalys#VisualGuard#Security#Repository#VGIRepositoryConnection#IsValidityChecked">
+            <summary>
+            Indicates whether the validity of the repository has already been checked
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.Repository.VGFileTransaction">
+            <summary>
+            Description résumée de VGFileTransaction.
+            </summary>
+        </member>
+        <member name="T:Novalys.VisualGuard.Security.Files.VGFileUtility">
+            <summary>
+            Common file methods.
+            </summary>
+        </member>
+        <member name="M:Novalys.VisualGuard.Security.Files.VGFileUtility.GetFileName(System.String)">
+            <summary>
+            Generate a file name base on a token
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
