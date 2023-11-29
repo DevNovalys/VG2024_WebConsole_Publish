@@ -22,7 +22,7 @@
     ],
     "languageVersion": "10.0",
     "platform": "",
-    "allowUnsafe": true,
+    "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": true,
     "keyFile": "G:\\Visual Studio\\2024\\key.snk",
