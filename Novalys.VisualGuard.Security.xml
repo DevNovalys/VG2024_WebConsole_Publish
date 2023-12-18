@@ -23700,11 +23700,6 @@
             <param name="propertyId">propertyId of attribute</param>
             <param name="propertyValue">propertyValue</param>
         </member>
-        <member name="P:Novalys.VisualGuard.Security.Membership.VGMembershipUser.ProfileValues">
-            <summary>
-            Gets User Profile values of the current user.
-            </summary>
-        </member>
         <member name="P:Novalys.VisualGuard.Security.Membership.VGMembershipUser.Id">
             <summary>
             Gets a id of the user
