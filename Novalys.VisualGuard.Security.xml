@@ -44523,6 +44523,7 @@
             </code>
             </example>
             <see cref="M:Novalys.VisualGuard.Security.VGSecurityManager.Authenticate(System.String,System.String,Novalys.VisualGuard.Security.VGAuthenticationMode)"/>
+            
         </member>
         <member name="M:Novalys.VisualGuard.Security.VGAuthenticationState.#ctor(Novalys.VisualGuard.Security.VGAuthenticationStatus)">
             <summary>

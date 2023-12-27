@@ -1,4 +1,70 @@
-﻿$(document).on('change', '#chkShowSelectedpermissionSets', function (event) {
+﻿$(document).on('change', '#ddlPermissionSetSearchCriteria', function () {
+
+    var ddlSearchCriteria = $(this);
+
+    var selected = $('option:selected', this);
+    var selectedValue = selected.val();
+    var selectedData = selected.data('attribute');
+
+    var url = ddlSearchCriteria.data('request-url');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        cache: false,
+        data: { selectedValue: selectedValue },
+        success: function (result) {
+            $("#spnPermissionSetSearch").empty();
+            $("#spnPermissionSetSearch").html(result);
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+});
+
+$(document).on('click', '#btnPermissionSetSearch', function (event) {
+    event.preventDefault();
+
+    var btnSearch = $(this);
+
+    var selected = $('#ddlPermissionSetSearchCriteria :selected');
+    var selectedValue = selected.val();
+    var selectedSearchValue;
+    var ddlSearchTextTypeValue = 0;
+
+    if ($('#txtSearchValue1').length) {
+        selectedSearchValue = $('#txtSearchValue1').val();
+    }
+    if ($('#ddlSearchTextType').length) {
+        ddlSearchTextTypeValue = $('#ddlSearchTextType').val();
+    }
+
+    var url = btnSearch.data('request-url');
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        cache: false,
+        data: { selectedValue: selectedValue, selectedSearchValue: selectedSearchValue, selectedSearchTextTypeValue: ddlSearchTextTypeValue },
+        success: function (result) {
+            if (result.Success) {
+                var grid1 = GetDataGridInstance('PermissionSetGrid');
+                grid1.clearFilter();
+                grid1.filter([result.Data]);
+            }
+            else {
+                ErrorAlert(result.Data, 1000, null, 0);
+            }
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+
+});
+
+$(document).on('change', '#chkShowSelectedpermissionSets', function (event) {
     if ($(this).is(":checked")) {
         $('#divSelectedPermissionSets').show();
         var permissionSetGridSelected = GetDataGridInstance('VGSelectedPermissionSet');
