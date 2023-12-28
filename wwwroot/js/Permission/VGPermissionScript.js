@@ -1,4 +1,67 @@
-﻿
+﻿$(document).on('change', '#ddlPermissionSearchCriteria', function () {
+
+    var ddlSearchCriteria = $(this);
+
+    var selected = $('option:selected', this);
+    var selectedValue = selected.val();
+
+    var url = ddlSearchCriteria.data('request-url');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        cache: false,
+        data: { selectedValue: selectedValue },
+        success: function (result) {
+            $("#spnPermissionSearch").empty();
+            $("#spnPermissionSearch").html(result);
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+});
+
+$(document).on('click', '#btnPermissionSearch', function (event) {
+    event.preventDefault();
+
+    var btnSearch = $(this);
+
+    var selected = $('#ddlPermissionSearchCriteria :selected');
+    var selectedValue = selected.val();
+    var selectedSearchValue;
+    var ddlSearchTextTypeValue = 0;
+
+    if ($('#txtSearchValue1').length) {
+        selectedSearchValue = $('#txtSearchValue1').val();
+    }
+    if ($('#ddlSearchTextType').length) {
+        ddlSearchTextTypeValue = $('#ddlSearchTextType').val();
+    }
+
+    var url = btnSearch.data('request-url');
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        cache: false,
+        data: { selectedValue: selectedValue, selectedSearchValue: selectedSearchValue, selectedSearchTextTypeValue: ddlSearchTextTypeValue },
+        success: function (result) {
+            if (result.Success) {
+                var tree = GetTreeListInstance('PermissionTreeList');
+                tree.clearFilter();
+                tree.filter([result.Data]);
+            }
+            else {
+                ErrorAlert(result.Data, 1000, null, 0);
+            }
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+});
+
 function UnSelectRow(id) {
     var permissionGridSelected = GetDataGridInstance('VGSelectedPermissionGrid');
     var keys = [];
