@@ -195,8 +195,36 @@ $(document).on("click", "#js-login-btn", function (e) {
         .done(function (result) {
             if (result.Success) {
                 if (result.IsRedirect) {
-                    ShowLoading('loadPanel', 'Redirecting...');
-                    window.location.href = result.Data;
+                    if (result.PasswordDoesNotPassValidation) {
+                        $.confirm({
+                            title: 'Password policy changed',
+                            content: 'Password policy is changed, so your password is not secure enough. Do you want to change your password?',
+                            escapeKey: 'cancel',
+                            backgroundDismiss: function () {
+                                return 'cancel'; // the button will handle it
+                            },
+                            closeIcon: true,
+                            theme: 'bootstrap',
+                            buttons: {
+                                confirm: {
+                                    text: 'Ok',
+                                    action: function () {                                        
+                                        window.location.href = result.ChangePasswordUrl;
+                                    }
+                                },
+                                cancel: {
+                                    text: 'Cancel', // With spaces and symbols
+                                    action: function () {
+                                        window.location.href = result.Data;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        ShowLoading('loadPanel', 'Redirecting...');
+                        window.location.href = result.Data;
+                    }
                 }
                 else {
                     //MFA
@@ -236,6 +264,10 @@ $(document).on("click", "#js-login-btn", function (e) {
             HideLoading('loadPanel');
         });
 });
+
+function OnConfirmationCallAction(data) {
+    window.location.href = data;
+}
 
 //#region -- MFA EVENTS
 
